@@ -1,0 +1,54 @@
+<div class="container mt-5">
+
+  <div class="alert alert-success alert-dismissible fade show" role="alert" *ngIf="msg">
+    <strong>Congratulations! </strong> Vehical Updated Successfully
+    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+      <span aria-hidden="true">&times;</span>
+    </button>
+  </div>
+
+  <h5  class="text-danger text-center">Update Vehical</h5>
+  <form #vehicalupdateform="ngForm" (ngSubmit)="updateVehical()">
+    <div class="form-group">
+      <label for="exampleInputVehicle">Vehical No</label>
+      <input type="text"  class="form-control" id="exampleInputVehicle" name="vehicalNo"    placeholder=" vehical no" [(ngModel)]="vehicalDetails.vehicalNo" #name1="ngModel" required>
+
+      <div class="alert alert-danger" *ngIf="!name1.valid">
+        <div *ngIf="name1?.errors?.required">This field is required</div>
+
+      </div>
+    </div>
+    <div class="form-group">
+      <label for="exampleInputCategory">Category</label>
+      <select id="exampleInputCategory" class="form-control" name="category"   [(ngModel)]="vehicalDetails.category" #name2="ngModel" required>
+        <option selected>Choose...</option>
+        <option value="Toyota">Toyota</option>
+        <option value="Bajaj">Bajaj</option>
+        <option value="Nisan">Nisan</option>
+        <option value="Honda">Honda</option>
+        <option value="Yamaha">Yamaha</option>
+        <option value="Hero Honda">Hero Honda</option>
+      </select>
+
+      <div class="alert alert-danger" *ngIf="!name2.valid">
+        <div *ngIf="name2?.errors?.required">This field is required</div>
+
+      </div>
+    </div>
+
+    <div class="form-group">
+      <label for="exampleInputPrice">Price</label>
+      <input type="text" class="form-control" id="exampleInputPrice" placeholder="price"  name="price"  [(ngModel)]="vehicalDetails.price" #name3="ngModel" required minlength="6">
+
+      <div class="alert alert-danger" *ngIf="!name3.valid">
+        <div *ngIf="name3.errors?.required">This field is required</div>
+        <div *ngIf="name3.errors?.minlength">You must enter atleast 6 characters</div>
+      </div>
+
+    </div>
+
+    <button type="submit" class="btn btn-primary" [disabled]="!vehicalupdateform.valid">Update Vehical</button>
+  </form>
+</div>
+
+

@@ -1,0 +1,69 @@
+<div class="container mt-5 mb-5">
+
+  <h5  class="text-danger text-center">Add Vehical</h5>
+  <form #addvehicalform="ngForm"  (ngSubmit)="addVehicalDetails(addvehicalform);addvehicalform.reset()" enctype="multipart/form-data" >
+
+    <div class="alert alert-success alert-dismissible fade show" role="alert" *ngIf="msg">
+      <strong>Congratulations! </strong> Vehical Added Successfully
+      <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+        <span aria-hidden="true">&times;</span>
+      </button>
+    </div>
+
+
+    <div class="form-group">
+      <label for="exampleInputVehicle">Vehical No</label>
+      <input type="text" class="form-control" id="exampleInputVehicle" name="vehicalNo" placeholder=" vehical no" ngModel #name1="ngModel" required>
+
+      <div class="alert alert-danger" *ngIf="!name1.valid">
+        <div *ngIf="name1?.errors?.required">This field is required</div>
+
+      </div>
+
+    </div>
+    <div class="form-group">
+      <label for="exampleInputCategory">Category</label>
+      <select id="exampleInputCategory" class="form-control" ngModel name="category" #name2="ngModel" required>
+        <option value="" selected>Choose...</option>
+        <option value="Toyota">Toyota</option>
+        <option value="Bajaj">Bajaj</option>
+        <option value="Nisan">Nisan</option>
+        <option value="Honda">Honda</option>
+        <option value="Yamaha">Yamaha</option>
+        <option value="Hero Honda">Hero Honda</option>
+
+
+      </select>
+      <div class="alert alert-danger" *ngIf="!name2.valid">
+        <div *ngIf="name2?.errors?.required">This field is required</div>
+
+      </div>
+
+    </div>
+
+    <div class="form-group">
+      <label for="exampleInputPrice">Price</label>
+      <input type="text" class="form-control" id="exampleInputPrice" placeholder="price" ngModel name="price" #name3="ngModel" required minlength="6" >
+
+      <div class="alert alert-danger" *ngIf="!name3.valid">
+        <div *ngIf="name3.errors?.required">This field is required</div>
+        <div *ngIf="name3.errors?.minlength">You must enter atleast 6 characters</div>
+      </div>
+    </div>
+
+
+
+    <div class="form-group">
+      <label for="exampleFormControlI">Image</label>
+      <input type="file" class="form-control-file" id="exampleFormControlI" name="image" ngModel (change)="getImage($event)"  >
+      <br>
+      <img [src]="imageSrc" alt="" >
+    </div>
+
+
+
+
+    <button type="submit" class="btn btn-primary" [disabled]="!addvehicalform.valid"  >Add Vehical</button>
+  </form>
+</div>
+

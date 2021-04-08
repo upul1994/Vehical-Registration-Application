@@ -1,0 +1,62 @@
+<div class="container mt-5 mb-5">
+
+  <div class="alert alert-success alert-dismissible fade show" role="alert" *ngIf="msg">
+    <strong>Congratulations! </strong> Vehical Deleted Successfully
+    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+      <span aria-hidden="true">&times;</span>
+    </button>
+  </div>
+
+  <table class="table table-striped">
+
+    <thead>
+
+    <tr>
+      <th>Vehical No</th>
+      <th>Category</th>
+      <th>Price</th>
+      <th>Image</th>
+      <th>Action</th>
+    </tr>
+
+    </thead>
+
+    <tbody>
+
+    <tr *ngFor="let vehical of vehicalList">
+      <td>{{vehical.vehicalNo}}</td>
+      <td>{{vehical.category}}</td>
+      <td>{{vehical.price}}</td>
+      <td><img [src]="vehical.image" style="width:100px;height: 100px "></td>
+      <td>
+        <button routerLink="/update/{{vehical._id}}" class="btn btn-primary mr-3">Edit</button>
+        <button class="btn btn-secondary" (click)="deleteVehicalData(vehical._id)">Delete</button>
+      </td>
+    </tr>
+
+
+
+    </tbody>
+
+
+
+
+  </table>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</div>
